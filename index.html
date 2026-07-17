@@ -513,7 +513,7 @@
           <div class="icon">📸</div>
           <p>이 폴더에 <strong>사진1.jpg</strong>로 저장하면<br>사진이 자동 표시됩니다</p>
         </div>
-        <img src="사진1.jpg" alt="우수관 정화 활동" onerror="this.remove()">
+        <img src="photo1.jpg" alt="우수관 정화 활동" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='사진1.jpg'}else{this.remove()}">
         <div class="photo-overlay"></div>
         <div class="photo-text">
           <div class="label">Clean-up Activity</div>
@@ -530,7 +530,7 @@
           <div class="icon">📸</div>
           <p>이 폴더에 <strong>사진2.jpg</strong>로 저장하면<br>사진이 자동 표시됩니다</p>
         </div>
-        <img src="사진2.jpg" alt="환경지키미 캠페인" onerror="this.remove()">
+        <img src="photo2.jpg" alt="환경지키미 캠페인" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='사진2.jpg'}else{this.remove()}">
         <div class="photo-overlay"></div>
         <div class="photo-text">
           <div class="label">Citizen Campaign</div>
