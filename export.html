@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제헌절, 헌법이 말하는 환경권 - 봉사활동 카드뉴스</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: #0d1117;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    gap: 20px;
+    min-height: 100vh;
+  }
+
+  .nav-hint {
+    color: #aaa;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .card-slider { width: 480px; max-width: 100%; position: relative; }
+  .slides { display: flex; flex-direction: column; gap: 24px; }
+
+  .card {
+    width: 480px;
+    max-width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+
+  .slide-counter {
+    color: #555;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-align: center;
+    padding: 8px 0;
+  }
+
+  /* ── CARD 1: COVER ── */
+  .card-1 {
+    background: linear-gradient(160deg, #0b4d2e 0%, #1a7a47 40%, #2dce89 100%);
+  }
+  .card-1 .bg-circle { position: absolute; border-radius: 50%; opacity: 0.15; }
+  .card-1 .c1 { width: 350px; height: 350px; background: #fff; top: -80px; right: -80px; }
+  .card-1 .c2 { width: 200px; height: 200px; background: #fff; bottom: -50px; left: -50px; }
+  .card-1 .c3 { width: 120px; height: 120px; background: #90f7c0; bottom: 80px; right: 40px; opacity: 0.25; }
+
+  .card-1 .tag {
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(8px);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.3);
+    margin-bottom: 24px;
+    position: relative; z-index: 1;
+  }
+
+  .card-1 .main-title {
+    font-size: 46px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    position: relative; z-index: 1;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  }
+  .card-1 .main-title span { color: #b8ffd9; }
+
+  .card-1 .subtitle {
+    font-size: 15px;
+    color: rgba(255,255,255,0.85);
+    margin-top: 16px;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    position: relative; z-index: 1;
+    line-height: 1.6;
+  }
+
+  .card-1 .date-badge {
+    position: absolute;
+    bottom: 32px;
+    right: 32px;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 12px;
+    letter-spacing: 0.05em;
+  }
+
+  .card-1 .emblem {
+    position: absolute;
+    font-size: 80px;
+    opacity: 0.12;
+    z-index: 0;
+  }
+  .card-1 .em-1 { top: 20px; left: 20px; transform: rotate(-15deg); }
+  .card-1 .em-2 { bottom: 30px; left: 30px; transform: rotate(20deg); font-size: 60px; }
+
+  /* ── CARD 2: CONSTITUTION QUOTE ── */
+  .card-2 {
+    background: #f4f8f4;
+    padding: 48px 40px;
+    justify-content: center;
+  }
+  .card-2 .quote-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 900;
+    color: #1a7a47;
+    margin-bottom: 32px;
+  }
+  .card-2 .quote-header .icon { font-size: 24px; }
+  .card-2 .quote-box {
+    background: #e6efe6;
+    border-radius: 20px;
+    padding: 36px 30px;
+    max-width: 380px;
+  }
+  .card-2 .quote-box p {
+    font-size: 21px;
+    font-weight: 700;
+    color: #222;
+    line-height: 1.6;
+    word-break: keep-all;
+  }
+  .card-2 .quote-box .source {
+    font-size: 13px;
+    font-style: italic;
+    color: #666;
+    margin-top: 20px;
+    font-weight: 400;
+  }
+  .card-2 .quote-footer {
+    margin-top: 28px;
+    font-size: 14px;
+    color: #333;
+    line-height: 1.7;
+    word-break: keep-all;
+  }
+  .card-2 .quote-footer strong { color: #0b4d2e; }
+
+  /* ── CARD 3: ACTIVITY INFO ── */
+  .card-3 {
+    background: #fff;
+    padding: 44px 38px;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    justify-content: flex-start;
+  }
+  .card-3 .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    color: #2dce89;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .card-3 h2 {
+    font-size: 27px;
+    font-weight: 900;
+    color: #111;
+    margin-bottom: 24px;
+    line-height: 1.25;
+  }
+  .info-list { display: flex; flex-direction: column; gap: 12px; width: 100%; }
+  .info-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 13px 18px;
+    background: #f7f9f8;
+    border-radius: 16px;
+    border-left: 4px solid #2dce89;
+  }
+  .info-icon { font-size: 24px; flex-shrink: 0; }
+  .info-content .info-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: #999;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .info-content .info-value {
+    font-size: 15px;
+    font-weight: 700;
+    color: #111;
+    line-height: 1.4;
+    word-break: keep-all;
+  }
+  .info-content .info-sub {
+    font-size: 11.5px;
+    font-weight: 400;
+    color: #777;
+    margin-top: 2px;
+  }
+
+  /* ── PHOTO CARDS ── */
+  .photo-card { background: #111; padding: 0; }
+  .photo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: absolute;
+    inset: 0;
+  }
+  .photo-card .photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 50%);
+    z-index: 1;
+  }
+  .photo-card .photo-text {
+    position: absolute;
+    bottom: 0;
+    left: 0; right: 0;
+    padding: 32px;
+    text-align: left;
+    z-index: 2;
+  }
+  .photo-card .photo-text .label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: #2dce89;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .photo-card .photo-text h2 {
+    font-size: 30px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.25;
+    word-break: keep-all;
+  }
+  .photo-placeholder {
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, #0b4d2e, #1a7a47, #2dce89);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+  .photo-placeholder .icon { font-size: 70px; opacity: 0.6; }
+  .photo-placeholder p {
+    color: rgba(255,255,255,0.75);
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+  }
+  .photo-placeholder p strong { font-weight: 700; color: #fff; }
+
+  /* ── CARD 6: RESULTS ── */
+  .card-6 {
+    background: linear-gradient(135deg, #111 0%, #1a1a2e 100%);
+    padding: 44px 38px;
+    position: relative;
+    overflow: hidden;
+    justify-content: flex-start;
+  }
+  .card-6 .glow { position: absolute; border-radius: 50%; }
+  .card-6 .glow-1 {
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(45,206,137,0.3) 0%, transparent 70%);
+    top: -80px; right: -60px;
+  }
+  .card-6 .glow-2 {
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(45,206,137,0.2) 0%, transparent 70%);
+    bottom: -50px; left: -40px;
+  }
+  .card-6 .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    color: #2dce89;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    position: relative; z-index: 1;
+    text-align: left;
+    width: 100%;
+  }
+  .card-6 h2 {
+    font-size: 26px;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 26px;
+    text-align: left;
+    width: 100%;
+    position: relative; z-index: 1;
+  }
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    width: 100%;
+    position: relative; z-index: 1;
+  }
+  .stat-box {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(45,206,137,0.25);
+    border-radius: 18px;
+    padding: 22px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .stat-box .num {
+    font-size: 38px;
+    font-weight: 900;
+    line-height: 1;
+    background: linear-gradient(135deg, #2dce89, #00f7a5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.03em;
+  }
+  .stat-box .unit {
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.75);
+  }
+  .stat-box .desc {
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    font-weight: 300;
+  }
+
+  /* ── CARD 7: CLOSING ── */
+  .card-7 {
+    background: linear-gradient(160deg, #0b4d2e 0%, #1a7a47 60%, #2dce89 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .card-7 .bg-shapes span {
+    position: absolute;
+    border: 2px solid rgba(255,255,255,0.12);
+    border-radius: 50%;
+  }
+  .card-7 .bg-shapes .s1 { width: 400px; height: 400px; top: -150px; left: -150px; }
+  .card-7 .bg-shapes .s2 { width: 280px; height: 280px; bottom: -100px; right: -100px; }
+  .card-7 .bg-shapes .s3 { width: 160px; height: 160px; top: 50px; right: 50px; }
+  .card-7 .content {
+    position: relative; z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding: 44px;
+  }
+  .card-7 .emoji-big { font-size: 64px; }
+  .card-7 h2 {
+    font-size: 32px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.3;
+    word-break: keep-all;
+  }
+  .card-7 p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 300;
+    line-height: 1.7;
+    letter-spacing: 0.03em;
+    max-width: 340px;
+    word-break: keep-all;
+  }
+  .card-7 .volunteer-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 50px;
+    padding: 12px 24px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .card-7 .org {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.08em;
+  }
+
+  @media (max-width: 520px) {
+    .card { width: 100%; }
+    .card-slider { width: 100%; }
+    .card-1 .main-title { font-size: 36px; }
+    .stat-box .num { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="nav-hint">↓ 스크롤하여 카드 보기 · 사진은 이 파일과 같은 폴더에 사진1.jpg ~ 사진5.jpg로 저장하면 자동 표시됩니다</div>
+
+<div class="card-slider">
+  <div class="slides">
+
+    <!-- CARD 1: COVER -->
+    <div>
+      <div class="slide-counter">01 / 10</div>
+      <div class="card card-1">
+        <div class="bg-circle c1"></div>
+        <div class="bg-circle c2"></div>
+        <div class="bg-circle c3"></div>
+        <div class="emblem em-1">🏛️</div>
+        <div class="emblem em-2">🌿</div>
+
+        <div class="tag">🏛️ 제78주년 제헌절 특집</div>
+        <div class="main-title">헌법이 말하는<br><span>환경권</span>을 지키다</div>
+        <div class="subtitle">제헌절, 헌법 제35조의 약속을 실천한<br>환경보전 봉사활동</div>
+        <div class="date-badge">2026. 07. 17</div>
+      </div>
+    </div>
+
+    <!-- CARD 2: CONSTITUTION QUOTE -->
+    <div>
+      <div class="slide-counter">02 / 10</div>
+      <div class="card card-2">
+        <div class="quote-header"><span class="icon">🏛️</span> 제헌절에 다시 읽는 헌법</div>
+        <div class="quote-box">
+          <p>“모든 국민은 건강하고 쾌적한 환경에서 생활할 권리를 가지며, 국가와 국민은 환경보전을 위하여 노력하여야 한다.”</p>
+          <div class="source">— 대한민국 헌법 제35조 제1항</div>
+        </div>
+        <div class="quote-footer">
+          <strong>환경권은 헌법이 보장하는 국민의 기본권입니다.</strong><br>
+          오늘, 그 권리를 지키기 위해 우리가 직접 나섰습니다.
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 3: ACTIVITY INFO -->
+    <div>
+      <div class="slide-counter">03 / 10</div>
+      <div class="card card-3">
+        <div class="section-label">Activity Info</div>
+        <h2>이번 봉사,<br>이렇게 했어요!</h2>
+
+        <div class="info-list">
+          <div class="info-item">
+            <div class="info-icon">👥</div>
+            <div class="info-content">
+              <div class="info-label">봉사자</div>
+              <div class="info-value">총 82명</div>
+              <div class="info-sub">화정 50 · 남산 11 · 서대문 7 · 파주 7 · 불광 7</div>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">📍</div>
+            <div class="info-content">
+              <div class="info-label">장소</div>
+              <div class="info-value">화정역문화광장 · 화정중앙공원 일대</div>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">🧹</div>
+            <div class="info-content">
+              <div class="info-label">활동 내용</div>
+              <div class="info-value">우수관 43곳 및 주변 정화<br>환경지키미 캠페인 · 환경서약 나뭇잎 카드</div>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">💚</div>
+            <div class="info-content">
+              <div class="info-label">주최</div>
+              <div class="info-value">신천지자원봉사단 서울경기북부지역연합회</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 4: PHOTO 1 -->
+    <div>
+      <div class="slide-counter">04 / 10</div>
+      <div class="card photo-card">
+        <div class="photo-placeholder">
+          <div class="icon">📸</div>
+          <p>이 폴더에 <strong>사진1.jpg</strong>로 저장하면<br>사진이 자동 표시됩니다</p>
+        </div>
+        <img src="photo1.jpg" alt="우수관 정화 활동" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='사진1.jpg'}else{this.remove()}">
+        <div class="photo-overlay"></div>
+        <div class="photo-text">
+          <div class="label">Clean-up Activity</div>
+          <h2>막힌 우수관을 뚫고,<br>거리를 되살리다</h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 5: PHOTO - STREET CLEANUP -->
+    <div>
+      <div class="slide-counter">05 / 10</div>
+      <div class="card photo-card">
+        <div class="photo-placeholder">
+          <div class="icon">📸</div>
+          <p>이 폴더에 <strong>사진5.jpg</strong>로 저장하면<br>사진이 자동 표시됩니다</p>
+        </div>
+        <img src="photo5.jpg" alt="거리 정화 활동" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='사진5.jpg'}else{this.remove()}">
+        <div class="photo-overlay"></div>
+        <div class="photo-text">
+          <div class="label">Clean-up Activity</div>
+          <h2>구석구석,<br>손길 닿는 곳마다 깨끗하게</h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 6: PHOTO 2 -->
+    <div>
+      <div class="slide-counter">06 / 10</div>
+      <div class="card photo-card">
+        <div class="photo-placeholder">
+          <div class="icon">📸</div>
+          <p>이 폴더에 <strong>사진2.jpg</strong>로 저장하면<br>사진이 자동 표시됩니다</p>
+        </div>
+        <img src="photo2.jpg" alt="환경지키미 캠페인" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='사진2.jpg'}else{this.remove()}">
+        <div class="photo-overlay"></div>
+        <div class="photo-text">
+          <div class="label">Citizen Campaign</div>
+          <h2>시민과 함께 키운<br>환경 희망나무</h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 7: PHOTO - CITIZEN PLEDGE -->
+    <div>
+      <div class="slide-counter">07 / 10</div>
+      <div class="card photo-card">
+        <div class="photo-placeholder">
+          <div class="icon">📸</div>
+          <p>이 폴더에 <strong>사진4.jpg</strong>로 저장하면<br>사진이 자동 표시됩니다</p>
+        </div>
+        <img src="photo4.jpg" alt="시민 환경서약 작성" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='사진4.jpg'}else{this.remove()}">
+        <div class="photo-overlay"></div>
+        <div class="photo-text">
+          <div class="label">Environmental Pledge</div>
+          <h2>시민의 손으로<br>하나둘 채워진 환경서약</h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 8: PHOTO - GROUP -->
+    <div>
+      <div class="slide-counter">08 / 10</div>
+      <div class="card photo-card">
+        <div class="photo-placeholder">
+          <div class="icon">📸</div>
+          <p>이 폴더에 <strong>사진3.jpg</strong>로 저장하면<br>사진이 자동 표시됩니다</p>
+        </div>
+        <img src="photo3.jpg" alt="봉사자 단체사진" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='사진3.jpg'}else{this.remove()}">
+        <div class="photo-overlay"></div>
+        <div class="photo-text">
+          <div class="label">Together</div>
+          <h2>82명이 함께 만든<br>오늘의 변화</h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 6: RESULTS -->
+    <div>
+      <div class="slide-counter">09 / 10</div>
+      <div class="card card-6">
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+
+        <div class="section-label">Today's Result</div>
+        <h2>오늘의 성과 📊</h2>
+
+        <div class="stat-grid">
+          <div class="stat-box">
+            <div class="num">1,600</div>
+            <div class="unit">개</div>
+            <div class="desc">담배꽁초 수거</div>
+          </div>
+          <div class="stat-box">
+            <div class="num">300</div>
+            <div class="unit">L</div>
+            <div class="desc">일반쓰레기 수거</div>
+          </div>
+          <div class="stat-box">
+            <div class="num">43</div>
+            <div class="unit">곳</div>
+            <div class="desc">우수관 정화</div>
+          </div>
+          <div class="stat-box">
+            <div class="num">88</div>
+            <div class="unit">명</div>
+            <div class="desc">시민 환경서약 및 캠페인 동참</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 7: CLOSING -->
+    <div>
+      <div class="slide-counter">10 / 10</div>
+      <div class="card card-7">
+        <div class="bg-shapes">
+          <span class="s1"></span>
+          <span class="s2"></span>
+          <span class="s3"></span>
+        </div>
+        <div class="content">
+          <div class="emoji-big">💚</div>
+          <h2>헌법의 약속,<br>우리 손으로 지켰습니다</h2>
+          <p>제헌절에 되새긴 환경권.<br>82명의 봉사자와 88명의 시민이 함께<br>건강하고 쾌적한 환경을 향한 한 걸음을 내디뎠습니다.</p>
+          <div class="volunteer-badge">👥 봉사자 82명이 함께했습니다</div>
+          <div class="org">신천지자원봉사단 서울경기북부지역연합회</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<style>
+html, body { margin:0 !important; padding:0 !important; background:#FF00FF !important; display:block !important; min-height:0 !important; }
+.nav-hint, .slide-counter { display:none !important; }
+.card-slider { width:auto !important; position:static !important; }
+.slides { display:block !important; }
+.slides > div { margin:0 !important; }
+.card { border-radius:0 !important; box-shadow:none !important; width:480px !important; max-width:480px !important; transform:scale(2); transform-origin:0 0; }
+</style>
+<script>
+const n = parseInt(new URLSearchParams(location.search).get('card') || '1');
+const wrappers = document.querySelectorAll('.card-slider .slides > div');
+wrappers.forEach((w, i) => { if (i !== n - 1) w.style.display = 'none'; });
+</script>
+</body>
+</html>
